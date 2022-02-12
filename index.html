@@ -403,6 +403,55 @@
         <button class="btn-close" data-modal-close>
           <svg width="11" height="11"><use href="./img/sprite.svg#close-btn"></use></svg>
         </button>
+        <div class="modal-form">
+          <h2 class="modal-title">Оставьте свои данные, мы вам перезвоним</h2>
+
+          <form>
+            <label class="modal-label"
+              >Имя
+              <input class="input-modal" type="text" name="name" />
+              <svg class="modal-icon" width="12" height="12">
+                <use href="./img/sprite.svg#icon-human"></use>
+              </svg>
+            </label>
+
+            <!-- </form> -->
+            <!-- <form class="modal-form"> -->
+            <label class="modal-label"
+              >Телефон
+              <input class="input-modal" type="phone" name="phone" />
+              <svg class="modal-icon" width="15" height="12">
+                <use href="./img/sprite.svg#icon-tube"></use>
+              </svg>
+            </label>
+            <!-- </form> -->
+            <!-- <form class="modal-form"> -->
+            <label class="modal-label"
+              >Почта
+              <input class="input-modal" type="email" name="email" />
+              <svg class="modal-icon" width="17" height="14">
+                <use href="./img/sprite.svg#icon-envelope"></use>
+              </svg>
+            </label>
+            <!-- </form> -->
+            <!-- <form> -->
+            <label class="modal-label">
+              Комментарий
+              <textarea name="feedback" rows="8" placeholder="Введите текст"></textarea>
+            </label>
+          </form>
+          <div class="modal-check">
+            <form class="modal-agree">
+              <label>
+                <input type="checkbox" name="" value="" checked />
+              </label>
+              <p class="mod-check">
+                Соглашаюсь с рассылкой и принимаю <a href="" class="modal-link">Условия договора</a>
+              </p>
+            </form>
+            <button type="button" class="modal-btn">Отправить</button>
+          </div>
+        </div>
       </div>
     </div>
     <script src="./js/modal.js"></script>
