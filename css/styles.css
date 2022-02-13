@@ -456,6 +456,7 @@ p {
 .subscribe {
   margin-left: 90px;
 }
+
 .subscribe div {
   display: flex;
 }
@@ -467,7 +468,15 @@ p {
   text-transform: uppercase;
   margin-bottom: 20px;
 }
+.sub-form {
+  position: relative;
+  min-width: 570px;
+  min-height: 50px;
+}
 .sub-btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
   width: 200px;
   height: 50px;
   margin-left: 12px;
@@ -504,6 +513,9 @@ p {
 }
 
 .input {
+  position: absolute;
+  left: 0;
+  bottom: 0;
   width: 360px;
   height: 50px;
   padding-left: 15px;
@@ -511,6 +523,8 @@ p {
   border: 1px solid rgba(255, 255, 255, 0.3);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
   border-radius: 4px;
+  outline: none;
+  color: var(--icon-color);
 }
 
 /*------ иконки социальных сетей ------*/
@@ -555,7 +569,8 @@ p {
 .projects {
   align-items: center;
 }
-.visually-hidden {
+.visually-hidden,
+.checkbox-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -693,28 +708,36 @@ p {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 4;
+  transform: scale(1.3);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-hidden {
   pointer-events: none;
   visibility: hidden;
   opacity: 0;
+  transform: scale(0);
 }
 
 .modal {
-  display: flex;
-  justify-content: flex-end;
-  position: absolute;
+  position: relative;
+  display: block;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px;
   min-height: 580px;
-  min-width: 520px;
+  width: 530px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--title-color);
 }
-
 .btn-close {
   position: absolute;
+  right: 0;
+  top: 0;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -725,28 +748,35 @@ p {
   height: 30px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: var(--title-color);
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-close svg {
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-close:hover,
+.btn-close:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+.btn-close:hover svg,
+.btn-close:focus svg {
+  fill: var(--accent-color);
 }
 .modal-title {
   text-align: center;
   margin-bottom: 15px;
-
+  text-align: center;
   font-weight: bold;
   font-size: 20px;
-  line-height: 23px;
-  text-align: center;
+  line-height: calc(23 / 20);
   letter-spacing: 0.03em;
 }
 
-.modal-form {
-  display: inline;
-  flex-direction: column;
-  justify-content: center;
-  padding: 40px;
-}
 .modal-label {
   position: relative;
   display: flex;
   flex-direction: column;
+  margin-bottom: 12px;
 
   font-size: 12px;
   line-height: 1.16;
@@ -754,15 +784,19 @@ p {
   color: var(--text-color);
 }
 .input-modal {
-  width: 450px;
+  width: 448px;
   height: 40px;
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
+  margin-top: 5px;
+  padding-left: 40px;
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-icon {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 15px;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-label:hover svg,
 .modal-label:focus svg {
@@ -771,17 +805,30 @@ p {
 .input-modal:hover,
 .input-modal:focus {
   border: 1px solid var(--accent-color);
+  outline: none;
 }
-textarea {
+.comment {
   resize: none;
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
-  width: 450px;
+  width: 448px;
   height: 120px;
+  margin-top: 5px;
+  padding-left: 15px;
+  padding-top: 10px;
+  color: var(--text-color);
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.modal-label textarea:hover,
-.modal-label textarea:focus {
+.modal-label .comment:hover,
+.modal-label .comment:focus {
   border: 1px solid #2196f3;
+  outline: none;
+}
+.modal-label ::placeholder {
+  color: rgba(117, 117, 117, 0.5);
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.01em;
 }
 .modal-agree {
   display: inline-flex;
@@ -795,19 +842,39 @@ textarea {
 }
 .modal-check {
   display: inline-flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-.mod-check {
+.checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 16px;
+  height: 15px;
+  margin-right: 7px;
+  margin-left: 10px;
+  margin-top: 3px;
+  border: 2px solid black;
+  border-radius: 2px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.checkbox-hidden:checked ~ .checkbox {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+.checkbox-hidden:focus ~ .checkbox {
+  border-color: var(--accent-color);
+}
+.check-text {
   font-size: 14px;
   line-height: 1.7;
   letter-spacing: 0.03em;
   color: var(--text-color);
 }
+
 .modal-btn {
-  /* align-items: center;
-  text-align: center; */
   width: 200px;
   height: 50px;
   margin-top: 30px;
@@ -815,16 +882,15 @@ textarea {
   font-weight: bold;
   font-size: 16px;
   line-height: 1.9;
-
   letter-spacing: 0.06em;
   background-color: var(--accent-color);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+
   border-radius: 4px;
   border: var(--accent-color);
   color: var(--title-color);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-btn:hover,
 .modal-btn:focus {
-  background-color: var(--background);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
