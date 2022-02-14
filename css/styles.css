@@ -853,8 +853,6 @@ p {
   width: 16px;
   height: 15px;
   margin-right: 7px;
-  /* margin-left: 10px; */
-  /* margin-top: 3px; */
   margin-bottom: 3px;
   border: 2px solid black;
   border-radius: 2px;
@@ -881,10 +879,6 @@ p {
   justify-content: center;
 }
 
-/* .checkbox-hidden:checked + .checkbox {
-  background-color: var(--accent-color);
-  border-color: var(--accent-color);
-} */
 .modal-button {
   display: flex;
   justify-content: center;
